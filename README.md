@@ -1,3 +1,7 @@
+![Logo](logo.png)
+
+---
+
 # torchplot - Plotting pytorch tensors made easy!
 
 Ask yourself the following:
@@ -42,8 +46,8 @@ pip install torchplot
 
 ## Example
 
-```
-# lets make a scatter plot of two pytorch variables
+``` python
+# lets make a scatter plot of two pytorch variables that are stored on gpu
 import torch
 import torchplot as plt
 x = torch.randn(100, requires_grad=True, device='cuda')

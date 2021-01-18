@@ -6,7 +6,7 @@
 
 Ask yourself the following:
 * Are you using `matplotlib.pyplot` to plot pytorch tensors?
-* Do you forget to call `.cpu().detach().numpy()` everytime you want to plot a tensor
+* Do you forget to call `.cpu().detach().numpy()` everytime you want to plot a tensor?
 
 Then `torchplot` may be something for you. `torchplot` is a simple drop-in replacement
 for plotting pytorch tensors. We simply override every `matplotlib.pyplot` function such
@@ -16,25 +16,25 @@ Simply just change your default `matplotlib` import statement:
 
 
 Instead of
-```
+``` python
 from matplotlib.pyplot import *
 ```
 use
-```
+``` python
 from torchplot import *
 ```
 and instead of
-```
+``` python
 import matplotlib.pyplot as plt
 ```
 use
-```
+``` python
 import torchplot as plt
 ```
 Herafter, then you can remove every `.cpu().detach().numpy()` (or variations heroff) from
 your code and everything should just work. If you do not want to mix implementations, 
 we recommend importing `torchplot` as seperaly package:
-```
+``` python
 import torchplot as tp
 ```
 

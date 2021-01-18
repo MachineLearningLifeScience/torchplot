@@ -31,15 +31,20 @@ def _torch2np(*args, **kwargs):
 
     return outargs, kwargs
 
+
 # Iterate over all members of 'plt' in order to duplicate them
 for name, member in getmembers(plt):
     if isfunction(member):
         doc = getdoc(member)
         strdoc = "" if doc is None else doc
-        exec(('def {name}(*args, **kwargs):\n' +
-              '\t"""{doc}"""\n' +
-              '\tnew_args, new_kwargs = _torch2np(*args, **kwargs)\n' +
-              '\treturn plt.{name}(*new_args, **new_kwargs)').format(name=name, doc=strdoc))
+        exec(
+            (
+                "def {name}(*args, **kwargs):\n"
+                + '\t"""{doc}"""\n'
+                + "\tnew_args, new_kwargs = _torch2np(*args, **kwargs)\n"
+                + "\treturn plt.{name}(*new_args, **new_kwargs)"
+            ).format(name=name, doc=strdoc)
+        )
     else:
-        exec('{name} = plt.{name}'.format(name=name))
-    #break
+        exec("{name} = plt.{name}".format(name=name))
+    # break

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # Copyright The GeoML Team
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -61,9 +62,9 @@ setup(
     author_email=torchplot.__author_email__,
     license=torchplot.__license__,
     packages=find_packages(exclude=["tests", "tests/*"]),
-    python_requires=">=3.8",
+    python_requires=">=3",
     install_requires=["torch", "matplotlib"],
-    download_url="https://github.com/CenterBioML/torchplot/archive/0.1.2.zip",
+    download_url="https://github.com/CenterBioML/torchplot/archive/0.1.3.zip",
     classifiers=[
         "Environment :: Console",
         "Natural Language :: English",
@@ -78,6 +79,6 @@ setup(
         "Operating System :: OS Independent",
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
-        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3"
     ],
 )

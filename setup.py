@@ -64,7 +64,7 @@ setup(
     packages=find_packages(exclude=["tests", "tests/*"]),
     python_requires=">=3",
     install_requires=["torch", "matplotlib"],
-    download_url="https://github.com/CenterBioML/torchplot/archive/0.1.3.zip",
+    download_url="https://github.com/CenterBioML/torchplot/archive/0.1.4.zip",
     classifiers=[
         "Environment :: Console",
         "Natural Language :: English",

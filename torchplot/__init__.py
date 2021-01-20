@@ -4,7 +4,7 @@ import time
 
 __name__ = "torchplot"
 _this_year = time.strftime("%Y")
-__version__ = "0.1.5"
+__version__ = "0.1.6"
 __author__ = "Nicki Skafte Detlefsen et al."
 __author_email__ = "nsde@dtu.dk"
 __license__ = "Apache-2.0"

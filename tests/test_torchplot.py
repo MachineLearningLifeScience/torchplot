@@ -11,15 +11,15 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import pytest
-from inspect import getmembers, isfunction
-from collections import namedtuple
 import string
-
-import torch
-import numpy as np
+from collections import namedtuple
+from inspect import getmembers, isfunction
 
 import matplotlib.pyplot as plt
+import numpy as np
+import pytest
+import torch
+
 import torchplot as tp
 
 Inputs = namedtuple("case", ["x", "y"])

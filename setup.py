@@ -1,21 +1,8 @@
 #!/usr/bin/env python
-# Copyright The GeoML Team
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 import os
 from io import open
 
-from setuptools import setup, find_packages, Command
+from setuptools import Command, find_packages, setup
 
 try:
     import builtins
@@ -23,7 +10,7 @@ except ImportError:
     import __builtin__ as builtins
 
 PATH_ROOT = os.path.dirname(__file__)
-builtins.__STOCHMAN_SETUP__ = True
+builtins.__TORCHPLOT_SETUP__ = True
 
 import torchplot
 
@@ -43,28 +30,27 @@ class CleanCommand(Command):
         os.system("rm -vrf ./build ./dist ./*.pyc ./*.tgz ./*.egg-info")
 
 
-PATH_ROOT = os.path.dirname(__file__)
+with open("README.md", encoding="utf-8") as f:
+    long_description = f.read()
 
 
-def load_readme(path_dir=PATH_ROOT):
-    with open(os.path.join(path_dir, "README.md"), encoding="utf-8") as f:
-        long_description = f.read()
-    return long_description
+with open("requirements.txt", "r") as reqs:
+    requirements = reqs.read().split()
 
 
 setup(
     name="torchplot",
     version=torchplot.__version__,
     description=torchplot.__docs__,
-    long_description=load_readme(PATH_ROOT),
+    long_description=long_description,
     long_description_content_type="text/markdown",
     author=torchplot.__author__,
     author_email=torchplot.__author_email__,
     license=torchplot.__license__,
     packages=find_packages(exclude=["tests", "tests/*"]),
     python_requires=">=3",
-    install_requires=["torch", "matplotlib"],
-    download_url="https://github.com/CenterBioML/torchplot/archive/0.1.4.zip",
+    install_requires=requirements,
+    download_url="https://github.com/CenterBioML/torchplot/archive/0.1.5.zip",
     classifiers=[
         "Environment :: Console",
         "Natural Language :: English",

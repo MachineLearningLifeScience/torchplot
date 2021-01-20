@@ -24,7 +24,7 @@ import torchplot as tp
 
 Inputs = namedtuple("case", ["x", "y"])
 
-_cpu_cases = [
+_cases = [
     Inputs(x=torch.randn(100), y=torch.randn(100)),
     Inputs(x=torch.randn(100, requires_grad=True), y=torch.randn(100, requires_grad=True)),
     # test that list/numpy arrays still works
@@ -36,24 +36,8 @@ _cpu_cases = [
     Inputs(x=torch.randn(5), y=[1, 2, 3, 4, 5]),
 ]
 
-_gpu_cases = [
-    Inputs(x=torch.randn(100, device="cuda"), y=torch.randn(100, device="cuda")),
-    Inputs(
-        x=torch.randn(100, requires_grad=True, device="cuda"), y=torch.randn(100, requires_grad=True, device="cuda")
-    ),
-]
-
 
 _members_to_check = [name for name, member in getmembers(plt) if isfunction(member) and not name.startswith("_")]
-
-
-def string_compare(text1, text2):
-    if text1 is None and text2 is None:
-        return True
-    remove = string.punctuation + string.whitespace
-    return text1.translate(str.maketrans(dict.fromkeys(remove))) == text2.translate(
-        str.maketrans(dict.fromkeys(remove))
-    )
 
 
 @pytest.mark.parametrize("member", _members_to_check)
@@ -63,14 +47,18 @@ def test_members(member):
     assert member in dir(tp)
 
 
-@pytest.mark.parametrize("test_case", _cpu_cases)
+@pytest.mark.parametrize("test_case", _cases)
 def test_cpu(test_case):
     """ test that it works on cpu """
     assert tp.plot(test_case.x, test_case.y, ".")
 
 
 @pytest.mark.skipif(not torch.cuda.is_available(), reason="test requires cuda")
-@pytest.mark.parametrize("test_case", _gpu_cases)
+@pytest.mark.parametrize("test_case", _cases)
 def test_gpu(test_case):
     """ test that it works on gpu """
-    assert tp.plot(test_case.x, test_case.y, ".")
+    assert tp.plot(
+        test_case.x.cuda() if isinstance(test_case.x, torch.Tensor) else test_case.x, 
+        test_case.y.cuda() if isinstance(test_case.y, torch.Tensor) else test_case.y, 
+        "."
+    )

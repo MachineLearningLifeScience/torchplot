@@ -39,7 +39,7 @@ with open("requirements.txt", "r") as reqs:
 
 
 setup(
-    name="torchplot",
+    name=torchplot.__name__,
     version=torchplot.__version__,
     description=torchplot.__docs__,
     long_description=long_description,
@@ -65,6 +65,7 @@ setup(
         "Operating System :: OS Independent",
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
-        "Programming Language :: Python :: 3"
+        "Programming Language :: Python :: 3",
     ],
+    cmdclass={"clean": CleanCommand},
 )

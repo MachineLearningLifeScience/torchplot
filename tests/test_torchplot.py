@@ -58,7 +58,7 @@ def test_cpu(test_case):
 def test_gpu(test_case):
     """ test that it works on gpu """
     assert tp.plot(
-        test_case.x.cuda() if isinstance(test_case.x, torch.Tensor) else test_case.x, 
-        test_case.y.cuda() if isinstance(test_case.y, torch.Tensor) else test_case.y, 
-        "."
+        test_case.x.cuda() if isinstance(test_case.x, torch.Tensor) else test_case.x,
+        test_case.y.cuda() if isinstance(test_case.y, torch.Tensor) else test_case.y,
+        ".",
     )

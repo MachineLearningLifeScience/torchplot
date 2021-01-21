@@ -11,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import string
 from collections import namedtuple
 from inspect import getmembers, isfunction
 
@@ -50,7 +49,10 @@ def test_members(member):
 @pytest.mark.parametrize("test_case", _cases)
 def test_cpu(test_case):
     """ test that it works on cpu """
+    # passed as args
     assert tp.plot(test_case.x, test_case.y, ".")
+    # passed as kwargs
+    assert tp.scatter(x=test_case.x, y=test_case.y)
 
 
 @pytest.mark.skipif(not torch.cuda.is_available(), reason="test requires cuda")
@@ -60,5 +62,9 @@ def test_gpu(test_case):
     assert tp.plot(
         test_case.x.cuda() if isinstance(test_case.x, torch.Tensor) else test_case.x,
         test_case.y.cuda() if isinstance(test_case.y, torch.Tensor) else test_case.y,
-        ".",
+    )
+    # passed as kwargs
+    assert tp.scatter(
+        x=test_case.x.cuda() if isinstance(test_case.x, torch.Tensor) else test_case.x,
+        y=test_case.y.cuda() if isinstance(test_case.y, torch.Tensor) else test_case.y,
     )

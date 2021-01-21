@@ -69,7 +69,7 @@ If you want to cite the framework feel free to use this (but only if you loved i
 ```bibtex
 @article{detlefsen2021torchplot,
   title={TorchPlot},
-  author={Detlefsen, Nicki S.},
+  author={Detlefsen, Nicki S. and Hauberg, Søren},
   journal={GitHub. Note: https://github.com/CenterBioML/torchplot},
   year={2021}
 }

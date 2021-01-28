@@ -50,7 +50,7 @@ setup(
     packages=find_packages(exclude=["tests", "tests/*"]),
     python_requires=">=3",
     install_requires=requirements,
-    download_url="https://github.com/CenterBioML/torchplot/archive/0.1.7.zip",
+    download_url="https://github.com/CenterBioML/torchplot/archive/0.2.0.zip",
     classifiers=[
         "Environment :: Console",
         "Natural Language :: English",

@@ -70,7 +70,7 @@ If you want to cite the framework feel free to use this (but only if you loved i
 @article{detlefsen2021torchplot,
   title={TorchPlot},
   author={Detlefsen, Nicki S. and Hauberg, Søren},
-  journal={GitHub. Note: https://github.com/CenterBioML/torchplot},
+  journal={GitHub. Note: https://github.com/MachineLearningLifeScience/torchplot},
   year={2021}
 }
 ```

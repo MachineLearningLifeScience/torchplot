@@ -4,12 +4,12 @@ import time
 
 __name__ = "torchplot"
 _this_year = time.strftime("%Y")
-__version__ = "0.1.7"
-__author__ = "Nicki Skafte Detlefsen et al."
+__version__ = "0.2.0"
+__author__ = "Nicki Skafte Detlefsen and Søren Hauberg"
 __author_email__ = "nsde@dtu.dk"
 __license__ = "Apache-2.0"
 __copyright__ = f"Copyright (c) 2018-{_this_year}, {__author__}."
-__homepage__ = "https://github.com/CenterBioML/torchplot"
+__homepage__ = "https://github.com/MachineLearningLifeScience/torchplot"
 __docs__ = "Plotting pytorch tensors made easy"
 
 PACKAGE_ROOT = os.path.dirname(__file__)
